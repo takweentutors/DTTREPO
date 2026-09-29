@@ -6,7 +6,7 @@ export const currentUser: User = {
  id: "u1",
  firstName: "Alex",
  lastName: "Rivera",
- email: "alex.rivera@student.takween.com",
+ email: "alex.rivera@student.letsgotutors.com",
  role: "student",
  balanceHours: 12.5,
 };
@@ -219,7 +219,7 @@ export const contacts: Contact[] = [
  },
  {
  id: "admin",
- name: "Takween Support",
+ name: "LGT Support",
  role: "Support",
  avatarUrl: "", 
  lastMessage: "Your payment has been processed successfully.",
@@ -242,7 +242,7 @@ export const mockChatHistory: Record<string, Message[]> = {
  { id: "m4", senderId: "t2", text: "Great progress today! See you next week.", timestamp: "Yesterday 5:00 PM", isMe: false },
  ],
  "admin": [
- { id: "m1", senderId: "admin", text: "Welcome to Takween Tutors!", timestamp: "Nov 01", isMe: false },
+ { id: "m1", senderId: "admin", text: "Welcome to Let's Go Tutors!", timestamp: "Nov 01", isMe: false },
  { id: "m2", senderId: "admin", text: "Your payment has been processed successfully.", timestamp: "Nov 10", isMe: false },
  ]
 };

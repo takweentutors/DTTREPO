@@ -40,19 +40,19 @@ function getBotResponse(input: string): string {
         return '🔄 You can cancel a session up to 24 hours in advance for a full refund. Please see our Terms of Service for full details.';
     }
     if (q.includes('hello') || q.includes('hi') || q.includes('hey')) {
-        return 'Hey there! 👋 I\'m the Takween assistant. How can I help you today? Feel free to ask about our subjects, pricing, or how to book!';
+        return "Hey there! 👋 I'm the Let's Go Tutors assistant. How can I help you today? Feel free to ask about our subjects, pricing, or how to book!";
     }
     if (q.includes('thank')) {
         return 'You\'re welcome! 😊 Is there anything else I can help with?';
     }
 
-    return '🤔 I\'m not sure about that one! Here are some things I can help with:\n\n• Subjects we offer\n• Pricing information\n• How to book a session\n• Academic levels we cover\n\nOr feel free to email us at **hello@takween.co.uk**!';
+    return '🤔 I\'m not sure about that one! Here are some things I can help with:\n\n• Subjects we offer\n• Pricing information\n• How to book a session\n• Academic levels we cover\n\nOr feel free to email us at **hello@letsgotutors.com**!';
 }
 
 export default function Chatbot() {
     const [open, setOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([
-        { id: 0, text: 'Hey! 👋 I\'m the Takween assistant. Ask me anything about our subjects, pricing, or how to book!', sender: 'bot' },
+        { id: 0, text: "Hey! 👋 I'm the Let's Go Tutors assistant. Ask me anything about our subjects, pricing, or how to book!", sender: 'bot' },
     ]);
     const [input, setInput] = useState('');
     const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -86,7 +86,7 @@ export default function Chatbot() {
             <button
                 onClick={() => setOpen(!open)}
                 className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 hover:shadow-xl"
-                style={{ background: '#10B981' }}
+                style={{ background: '#00D4FF' }}
                 aria-label="Open chat"
             >
                 {open ? (
@@ -104,13 +104,13 @@ export default function Chatbot() {
                     {/* Header */}
                     <div
                         className="px-5 py-4 text-white flex items-center gap-3 shrink-0"
-                        style={{ background: '#10B981' }}
+                        style={{ background: '#00D4FF' }}
                     >
                         <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
                             <Bot className="w-5 h-5" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-sm">Takween Assistant</h3>
+                            <h3 className="font-bold text-sm">LGT Assistant</h3>
                             <p className="text-xs text-white/70">Ask me anything!</p>
                         </div>
                     </div>
@@ -163,7 +163,7 @@ export default function Chatbot() {
                             type="submit"
                             disabled={!input.trim()}
                             className="w-10 h-10 rounded-xl flex items-center justify-center text-white disabled:opacity-40 transition-all hover:scale-105"
-                            style={{ background: '#10B981' }}
+                            style={{ background: '#00D4FF' }}
                             aria-label="Send message"
                         >
                             <Send className="w-4 h-4" />

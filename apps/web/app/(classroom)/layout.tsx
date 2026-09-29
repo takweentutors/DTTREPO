@@ -2,7 +2,7 @@
 import React from "react";
 
 export const metadata = {
- title: "Takween Live Classroom",
+ title: "Let's Go Tutors Live Classroom",
  description: "Virtual Classroom Environment",
 };
 

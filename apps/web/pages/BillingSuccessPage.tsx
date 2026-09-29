@@ -35,7 +35,7 @@ export default function BillingSuccessPage() {
 
  sendBookingConfirmationEmail({
  studentName: user?.name || "Student",
- studentEmail: user?.email || "student@takween.com",
+ studentEmail: user?.email || "student@letsgotutors.com",
  subjectName: token.subjectName,
  subjectSlug: token.subjectSlug,
  tutorName: token.tutorName,
@@ -54,7 +54,7 @@ export default function BillingSuccessPage() {
  return (
  <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white flex items-center justify-center p-4">
  <div className="max-w-md w-full bg-white rounded-3xl shadow-card overflow-hidden animate-in fade-in zoom-in duration-500 border border-slate-200 ">
- <div className="p-8 text-center text-white" style={{ background: 'linear-gradient(135deg, #0F172A, #334155)' }}>
+ <div className="p-8 text-center text-white" style={{ background: 'linear-gradient(135deg, #0B0D2E, #334155)' }}>
  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-md">
  <CheckCircle2 className="w-8 h-8 text-white" />
  </div>
@@ -102,9 +102,9 @@ export default function BillingSuccessPage() {
  </p>
 
  <a
- href="/student/dashboard"
+ href="/dashboard"
  className="block w-full py-3.5 text-white font-bold rounded-2xl text-center transition-all shadow-card hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2"
- style={{ background: 'linear-gradient(135deg, #0F172A, #334155)' }}
+ style={{ background: 'linear-gradient(135deg, #0B0D2E, #334155)' }}
  >
  Go to Dashboard <ArrowRight className="w-5 h-5" />
  </a>
@@ -112,7 +112,7 @@ export default function BillingSuccessPage() {
  ) : (
  <div className="text-center">
  <p className="text-slate-400 mb-6">Redirecting you to your dashboard...</p>
- <a href="/student/dashboard" className="text-primary font-bold hover:underline">Click here if not redirected</a>
+ <a href="/dashboard" className="text-primary font-bold hover:underline">Click here if not redirected</a>
  </div>
  )}
  </div>

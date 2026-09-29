@@ -12,7 +12,7 @@ interface SessionPageProps {
 }
 
 export default function SessionPage({ sessionId }: SessionPageProps) {
- const roomName = `takween-${sessionId}`;
+ const roomName = `lgt-${sessionId}`;
  const [videoPanelCollapsed, setVideoPanelCollapsed] = useState(false);
 
  const jitsiSrc = `https://meet.jit.si/${encodeURIComponent(roomName)}#config.prejoinPageEnabled=false&config.disableDeepLinking=true&interfaceConfig.DISPLAY_WELCOME_PAGE_CONTENT=false&interfaceConfig.SHOW_JITSI_WATERMARK=false`;

@@ -40,7 +40,10 @@ export async function api<T = unknown>(
     if (res.status === 401) {
         // Token is invalid/missing. Supabase handles its own refresh transparently
         // when getSession() is called. If that failed, the user is genuinely logged out.
-        window.location.href = '/login';
+        // Include returnTo so they come back to where they were
+        const returnTo = encodeURIComponent(window.location.pathname + window.location.search);
+        window.location.href = `/login?returnTo=${returnTo}`;
+
         throw new ApiError(401, 'Session expired or unauthorized');
     }
 

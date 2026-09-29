@@ -52,27 +52,31 @@ const CookiePolicyPage = React.lazy(() => import('./pages/LegalPages').then(m =>
 const SafeguardingPage = React.lazy(() => import('./pages/LegalPages').then(m => ({ default: m.SafeguardingPage })));
 const MockPaymentPage = React.lazy(() => import('./pages/MockPaymentPage').then(m => ({ default: m.MockPaymentPage })));
 
+// Admin pages
+const AdminOverviewPage = React.lazy(() => import('./app/(dashboard)/admin/page'));
+const AdminTutorsPage = React.lazy(() => import('./app/(dashboard)/admin/tutors/page'));
+const AdminCalendarPage = React.lazy(() => import('./app/(dashboard)/admin/calendar/page'));
+const AdminStudentsPage = React.lazy(() => import('./app/(dashboard)/admin/students/page'));
+const AdminPaymentsPage = React.lazy(() => import('./app/(dashboard)/admin/payments/page'));
+const AdminApplicationsPage = React.lazy(() => import('./app/(dashboard)/admin/applications/page'));
+const AdminSupportPage = React.lazy(() => import('./app/(dashboard)/admin/support/page'));
+const AdminSettingsPage = React.lazy(() => import('./app/(dashboard)/admin/settings/page'));
+
 const LoadingSpinner = () => (
     <div className="flex items-center justify-center min-h-[60vh]">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-secondary"></div>
     </div>
 );
 
-// Helper to redirect /dashboard based on role
-function DashboardRedirect() {
+// Wrapper that redirects PARENT/ADMIN to their dedicated dashboards,
+// renders children for STUDENT/TUTOR who share the /dashboard/* routes
+function DashboardGuard({ children }: { children: React.ReactNode }) {
     const { user, loading } = useAuth();
     if (loading) return <LoadingSpinner />;
-    if (!user) {
-        navigate('/login');
-        return null;
-    }
-    switch (user.role) {
-        case 'TUTOR': navigate('/tutor/dashboard'); break;
-        case 'PARENT': navigate('/parent-dashboard'); break;
-        case 'ADMIN': navigate('/admin'); break;
-        default: navigate('/student/dashboard');
-    }
-    return null;
+    if (!user) { navigate('/login'); return null; }
+    if (user.role === 'PARENT') { navigate('/parent-dashboard'); return null; }
+    if (user.role === 'ADMIN') { navigate('/admin'); return null; }
+    return <>{children}</>;
 }
 
 const Router = () => {
@@ -173,10 +177,28 @@ const Router = () => {
         content = <RegisterPage />;
         layout = 'auth';
     }
-    // Legacy /dashboard redirect
-    else if (path === '/dashboard' || path === '/dashboard/') {
-        content = <DashboardRedirect />;
-        layout = 'root';
+    // Dashboard routes (role-aware, shared between STUDENT and TUTOR)
+    else if (path === '/dashboard' || path === '/dashboard/' || path.startsWith('/dashboard/')) {
+        layout = 'dashboard';
+        content = (
+            <ProtectedRoute>
+                <DashboardGuard>
+                {path === '/dashboard' || path === '/dashboard/' ? <StudentDashboardPage /> :
+                    path === '/dashboard/sessions' ? <SessionsPage /> :
+                        path === '/dashboard/messages' ? <MessagesPage /> :
+                            path === '/dashboard/billing' ? <BillingPage /> :
+                                path === '/dashboard/resources' ? <ResourcesPage /> :
+                                    path === '/dashboard/settings' ? <SettingsPage /> :
+                                        path === '/dashboard/availability' ? <AvailabilityPage /> :
+                                            path === '/dashboard/students' ? <StudentsPage /> :
+                                                path.startsWith('/dashboard/tutors/') ? (() => {
+                                                    const parts = path.split('/');
+                                                    return parts.length >= 4 ? <TutorProfilePage params={{ tutorId: parts[3] }} /> : <StudentDashboardPage />;
+                                                })() :
+                                                    <StudentDashboardPage />}
+                </DashboardGuard>
+            </ProtectedRoute>
+        );
     }
     // Parent Routes (protected)
     else if (path.startsWith('/parent-dashboard')) {
@@ -189,54 +211,32 @@ const Router = () => {
             </ProtectedRoute>
         );
     }
-    // Student Routes (protected)
+    // Legacy /student/* and /tutor/* routes → redirect to /dashboard/*
     else if (path.startsWith('/student/')) {
-        layout = 'dashboard';
-        content = (
-            <ProtectedRoute>
-                <RoleRoute role="STUDENT">
-                    {path === '/student/dashboard' ? <StudentDashboardPage /> :
-                        path === '/student/sessions' ? <SessionsPage /> :
-                            path === '/student/messages' ? <MessagesPage /> :
-                                path === '/student/billing' ? <BillingPage /> :
-                                    path === '/student/resources' ? <ResourcesPage /> :
-                                        path === '/student/settings' ? <SettingsPage /> :
-                                            <StudentDashboardPage />}
-                </RoleRoute>
-            </ProtectedRoute>
-        );
+        const subPath = path.replace('/student/', '/dashboard/').replace('/dashboard/dashboard', '/dashboard');
+        navigate(subPath);
+        return null;
     }
-    // Tutor Routes (protected)
     else if (path.startsWith('/tutor/')) {
-        layout = 'dashboard';
-        content = (
-            <ProtectedRoute>
-                <RoleRoute role="TUTOR">
-                    {path === '/tutor/dashboard' ? <TutorDashboardPage /> :
-                        path === '/tutor/sessions' ? <SessionsPage /> :
-                            path === '/tutor/availability' ? <AvailabilityPage /> :
-                                path === '/tutor/students' ? <StudentsPage /> :
-                                    path === '/tutor/messages' ? <MessagesPage /> :
-                                        path === '/tutor/settings' ? <SettingsPage /> :
-                                            path.startsWith('/tutor/tutors/') ? (() => {
-                                                const parts = path.split('/');
-                                                return parts.length >= 4 ? <TutorProfilePage params={{ tutorId: parts[3] }} /> : <TutorDashboardPage />;
-                                            })() :
-                                                <TutorDashboardPage />}
-                </RoleRoute>
-            </ProtectedRoute>
-        );
+        const subPath = path.replace('/tutor/', '/dashboard/').replace('/dashboard/dashboard', '/dashboard');
+        navigate(subPath);
+        return null;
     }
     // Admin Routes (protected)
-    else if (path.startsWith('/admin')) {
+    else if (path === '/admin' || path.startsWith('/admin/')) {
         layout = 'dashboard';
         content = (
             <ProtectedRoute>
                 <RoleRoute role="ADMIN">
-                    <div className="space-y-8">
-                        <h1 className="text-2xl font-bold text-slate-900">Admin Panel</h1>
-                        <p className="text-slate-500">Admin dashboard coming soon.</p>
-                    </div>
+                    {path === '/admin' ? <AdminOverviewPage /> :
+                        path === '/admin/tutors' ? <AdminTutorsPage /> :
+                            path === '/admin/calendar' ? <AdminCalendarPage /> :
+                                path === '/admin/students' ? <AdminStudentsPage /> :
+                                    path === '/admin/payments' ? <AdminPaymentsPage /> :
+                                        path === '/admin/applications' ? <AdminApplicationsPage /> :
+                                            path === '/admin/support' ? <AdminSupportPage /> :
+                                                path === '/admin/settings' ? <AdminSettingsPage /> :
+                                                    <AdminOverviewPage />}
                 </RoleRoute>
             </ProtectedRoute>
         );

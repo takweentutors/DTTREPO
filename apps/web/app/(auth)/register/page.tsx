@@ -7,16 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useToast } from "@/components/ui/toast";
 import { navigate } from "@/lib/utils";
 import { CheckCircle2 } from "lucide-react";
-
-function getRoleDashboard(role: string): string {
-    switch (role) {
-        case 'STUDENT': return '/student/dashboard';
-        case 'PARENT': return '/parent-dashboard';
-        case 'TUTOR': return '/tutor/dashboard';
-        case 'ADMIN': return '/admin';
-        default: return '/';
-    }
-}
+import { getRoleDashboard } from "@/lib/routes";
 
 function getPasswordStrength(pw: string): { label: string; color: string; width: string } {
     if (!pw) return { label: '', color: '', width: '0%' };
@@ -97,13 +88,14 @@ export default function RegisterPage() {
         { label: 'One lowercase letter', met: /[a-z]/.test(password) },
         { label: 'One number', met: /[0-9]/.test(password) },
         { label: 'One special character', met: /[^A-Za-z0-9]/.test(password) },
+        ...(confirmPassword ? [{ label: 'Passwords match', met: password === confirmPassword }] : []),
     ];
 
     return (
         <div className="space-y-6">
             <div className="space-y-2 text-center">
                 <h1 className="text-2xl font-bold tracking-tight text-slate-900">Create an account</h1>
-                <p className="text-sm text-slate-500">Start your journey with Takween Tutors</p>
+                <p className="text-sm text-slate-500">Start your journey with Let's Go Tutors</p>
             </div>
 
             {formError && (
@@ -158,9 +150,9 @@ export default function RegisterPage() {
                         required
                         minLength={8}
                         value={password}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setPassword(e.target.value); setFormError(''); }}
                     />
-                    {password && (
+                    {(password || confirmPassword) && (
                         <div className="space-y-2 pt-1">
                             <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
                                 <div className={`h-full rounded-full transition-all duration-300 ${strength.color}`} style={{ width: strength.width }} />

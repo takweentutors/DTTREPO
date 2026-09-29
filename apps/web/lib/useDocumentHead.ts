@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 export function useDocumentHead({ title, description }: { title: string; description?: string }) {
  useEffect(() => {
  // Update title
- document.title = title ? `${title} | Takween Tutors` : 'Takween Tutors | Personalised Tuition';
+ document.title = title ? `${title} | Let's Go Tutors` : "Let's Go Tutors | Personalised Tuition";
 
  // Update meta description
  if (description) {

@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { CookieConsent } from "@/components/CookieConsent";
 
 export const metadata = {
-    title: "Takween Tutors | Excellence in Education",
+    title: "Let's Go Tutors | Excellence in Education",
     description: "Personalised tuition for GCSE and A-Level success.",
 };
 

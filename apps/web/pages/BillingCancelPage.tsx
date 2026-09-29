@@ -19,12 +19,12 @@ export default function BillingCancelPage() {
  <a
  href="/subjects"
  className="block w-full py-3 text-white font-bold rounded-2xl transition-all shadow-card hover:shadow-lg hover:-translate-y-0.5"
- style={{ background: 'linear-gradient(135deg, #0F172A, #334155)' }}
+ style={{ background: 'linear-gradient(135deg, #0B0D2E, #334155)' }}
  >
  Browse Subjects 📖
  </a>
  <a
- href="/student/dashboard"
+ href="/dashboard"
  className="block w-full py-3 text-slate-600 font-bold hover:bg-slate-100 rounded-2xl transition-colors"
  >
  Return to Dashboard

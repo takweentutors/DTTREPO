@@ -182,7 +182,7 @@ export default function TutorDashboardPage() {
                 <div className="lg:col-span-2 space-y-6">
                     <div className="flex items-center justify-between">
                         <h2 className="text-lg font-bold text-slate-900 ">Upcoming Sessions</h2>
-                        <a href="/tutor/sessions" className="text-sm text-secondary hover:underline">View all</a>
+                        <a href="/dashboard/sessions" className="text-sm text-secondary hover:underline">View all</a>
                     </div>
 
                     <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">

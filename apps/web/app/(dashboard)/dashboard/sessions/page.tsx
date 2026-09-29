@@ -293,9 +293,11 @@ export default function SessionsPage() {
                                     : "You haven't completed any sessions yet."}
                             </p>
                             {sessionFilter === 'upcoming' && (
-                                <Button onClick={() => setView("book")} className="mt-6 btn-secondary">
-                                    Find a Tutor
-                                </Button>
+                                <a href="/subjects" className="inline-block w-full sm:w-auto mt-6">
+                                    <Button className="btn-secondary w-full">
+                                        Browse Subjects
+                                    </Button>
+                                </a>
                             )}
                         </div>
                     )}

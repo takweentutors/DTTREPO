@@ -24,7 +24,7 @@ interface SentEmail {
  status: 'sent' | 'failed';
 }
 
-const STORAGE_KEY = 'takween_sent_emails';
+const STORAGE_KEY = 'lgt_sent_emails';
 
 function getSentEmails(): SentEmail[] {
  try {
@@ -128,7 +128,7 @@ export function renderBookingEmailHtml(payload: BookingConfirmationPayload): str
  You can view your upcoming sessions and manage bookings from your dashboard.
  </p>
  <div style="text-align:center;margin-bottom:24px;">
- <a href="https://takweentutors.com/student/dashboard"
+ <a href="https://letsgotutors.com/student/dashboard"
  style="display:inline-block;background:linear-gradient(135deg,#f97316,#f59e0b);color:#fff;padding:12px 32px;border-radius:9999px;text-decoration:none;font-weight:600;font-size:14px;">
  Go to Dashboard →
  </a>
@@ -136,10 +136,10 @@ export function renderBookingEmailHtml(payload: BookingConfirmationPayload): str
  </div>
  <div style="border-top:1px solid #e2e8f0;padding:24px;text-align:center;">
  <p style="color:#94a3b8;font-size:12px;margin:0 0 4px;">
- Takween Tutors — A different kind of tuition agency.
+ Let's Go Tutors — A different kind of tuition agency.
  </p>
  <p style="color:#94a3b8;font-size:12px;margin:0;">
- <a href="mailto:info@takweentutors.com" style="color:#f97316;">info@takweentutors.com</a>
+ <a href="mailto:info@letsgotutors.com" style="color:#f97316;">info@letsgotutors.com</a>
  </p>
  </div>
 </div>

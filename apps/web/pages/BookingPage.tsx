@@ -57,7 +57,7 @@ export default function BookingPage({ slug }: BookingPageProps) {
 
     useDocumentHead({
         title: subject ? `Book ${subject.name} Tuition` : "Book Tuition",
-        description: subject ? `Book your personalised ${subject.name} tuition course at Takween Tutors.` : "Book your tuition course.",
+        description: subject ? `Book your personalised ${subject.name} tuition course at Let's Go Tutors.` : "Book your tuition course.",
     });
 
     // State
@@ -323,7 +323,7 @@ export default function BookingPage({ slug }: BookingPageProps) {
                             </div>
 
                             {/* Live Price Summary Card */}
-                            <div className="text-white p-6 rounded-3xl shadow-card mb-8 transform transition-all" style={{ background: 'linear-gradient(135deg, #0F172A, #1E293B)' }}>
+                            <div className="text-white p-6 rounded-3xl shadow-card mb-8 transform transition-all" style={{ background: 'linear-gradient(135deg, #0B0D2E, #1E293B)' }}>
                                 <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
                                     <div className="text-center md:text-left">
                                         <div className="text-2xl font-bold text-white">
@@ -398,11 +398,16 @@ export default function BookingPage({ slug }: BookingPageProps) {
                         </section>
 
                         <div className="pt-6 border-t border-slate-100 mt-8">
+                            {(!selectedDate || !selectedTime) && (
+                                <p className="text-sm text-slate-400 mb-3">
+                                    {!selectedDate ? 'Select a date above to continue' : 'Select a time slot above to continue'}
+                                </p>
+                            )}
                             <button
                                 onClick={handleScheduleSubmit}
                                 disabled={!selectedDate || !selectedTime}
                                 className="w-full sm:w-auto ml-auto px-8 py-4 text-white rounded-full font-bold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all shadow-card hover:shadow-lg hover:-translate-y-1"
-                                style={{ background: 'linear-gradient(135deg, #0F172A, #334155)' }}
+                                style={{ background: 'linear-gradient(135deg, #0B0D2E, #334155)' }}
                             >
                                 Find Tutors 🔍 <ChevronRight className="w-5 h-5" />
                             </button>
@@ -530,7 +535,7 @@ export default function BookingPage({ slug }: BookingPageProps) {
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-slate-400">Monthly Rate</span>
-                                        <span className="font-bold text-primary ">£{finalWeekly} / month</span>
+                                        <span className="font-bold text-primary ">£{finalMonthly} / month</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-slate-400">Per Session</span>
@@ -540,9 +545,9 @@ export default function BookingPage({ slug }: BookingPageProps) {
 
                                 <div className="mt-8 pt-6 border-t border-slate-100 flex justify-between items-center">
                                     <div>
-                                        <p className="text-sm text-slate-400 mb-1">Monthly total (4 sessions)</p>
-                                        <p className="text-3xl font-bold text-primary ">£{finalWeekly}</p>
-                                        <p className="text-xs text-slate-400 mt-1">~ £{finalMonthly}/mo est.</p>
+                                        <p className="text-sm text-slate-400 mb-1">Monthly total ({freqCount * 4} sessions)</p>
+                                        <p className="text-3xl font-bold text-primary ">£{finalMonthly}</p>
+                                        <p className="text-xs text-slate-400 mt-1">£{finalPerSession}/session × {freqCount * 4} sessions/mo</p>
                                     </div>
                                     <div className="text-right">
                                         <span className="text-xs text-slate-400">🔒 Secured by Stripe</span>
@@ -553,7 +558,7 @@ export default function BookingPage({ slug }: BookingPageProps) {
                             <button
                                 onClick={handleConfirm}
                                 className="w-full py-4 text-center rounded-full text-white font-bold text-lg shadow-card hover:shadow-lg hover:-translate-y-1 transition-all flex items-center justify-center gap-2"
-                                style={{ background: 'linear-gradient(135deg, #0F172A, #334155)' }}
+                                style={{ background: 'linear-gradient(135deg, #0B0D2E, #334155)' }}
                             >
                                 Proceed to Payment 🚀 <ArrowLeft className="w-5 h-5 rotate-180" />
                             </button>

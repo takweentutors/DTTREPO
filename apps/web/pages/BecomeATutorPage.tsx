@@ -34,13 +34,13 @@ export default function BecomeATutorPage() {
     return (
         <>
             {/* Hero */}
-            <section className="relative bg-gradient-to-b from-slate-50 to-white pt-14 sm:pt-20 pb-10 sm:pb-16 overflow-hidden">
+            <section className="relative bg-gradient-to-b from-slate-50 to-white pt-32 sm:pt-40 pb-10 sm:pb-16 overflow-hidden">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
                     <span className="inline-block px-4 py-1.5 rounded-full bg-accent/15 text-accent-dark text-sm font-bold mb-6">
                         🎓 Now accepting applications
                     </span>
                     <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-primary mb-4">
-                        Become a <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Takween Tutor</span>
+                        Become a <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Let's Go Tutor</span>
                     </h1>
                     <p className="text-lg text-slate-500 max-w-2xl mx-auto">
                         Join a mission-driven tutoring agency that values its educators. Flexible hours, fair pay, and a platform that actually helps you teach.
@@ -107,7 +107,7 @@ export default function BecomeATutorPage() {
                 <div className="max-w-6xl mx-auto px-4 sm:px-6">
                     <div className="text-center mb-10">
                         <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-3">Real Tutors, Real Impact</h2>
-                        <p className="text-slate-500 ">Hear from educators who teach with Takween.</p>
+                        <p className="text-slate-500 ">Hear from educators who teach with Let's Go Tutors.</p>
                     </div>
                     <TestimonialsCarousel />
                 </div>

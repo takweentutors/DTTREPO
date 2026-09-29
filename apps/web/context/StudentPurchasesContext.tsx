@@ -53,8 +53,8 @@ interface StudentPurchasesContextType extends StudentPurchasesState {
  clearBookingToken: () => void;
 }
 
-const PURCHASES_KEY = 'takween_student_purchases';
-const BOOKING_TOKEN_KEY = 'takween_booking_token';
+const PURCHASES_KEY = 'lgt_student_purchases';
+const BOOKING_TOKEN_KEY = 'lgt_booking_token';
 
 function loadLocalPurchases(): StudentPurchasesState {
  try {

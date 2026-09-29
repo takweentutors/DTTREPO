@@ -12,8 +12,8 @@ interface SubjectStatsSectionProps {
 
 // ── Colour palette ──
 const COLORS = {
-    navy: '#0F172A',
-    green: '#10B981',
+    navy: '#0B0D2E',
+    green: '#00D4FF',
     orange: '#F97316',
     lightNavy: '#334155',
     lightGreen: '#6EE7B7',
@@ -63,26 +63,26 @@ const progressData: Record<string, { month: string; score: number; label: string
 };
 
 // ── Bar comparison data ──
-const comparisonData: Record<string, { metric: string; national: number; takween: number; suffix: string }[]> = {
+const comparisonData: Record<string, { metric: string; national: number; lgt: number; suffix: string }[]> = {
     GCSE: [
-        { metric: 'Grade 9 Rate', national: 7.9, takween: 34, suffix: '%' },
-        { metric: 'Grade 7+ Rate', national: 26.5, takween: 72, suffix: '%' },
-        { metric: 'Grade 5+ Rate', national: 69, takween: 96, suffix: '%' },
+        { metric: 'Grade 9 Rate', national: 7.9, lgt: 34, suffix: '%' },
+        { metric: 'Grade 7+ Rate', national: 26.5, lgt: 72, suffix: '%' },
+        { metric: 'Grade 5+ Rate', national: 69, lgt: 96, suffix: '%' },
     ],
     'A-Level': [
-        { metric: 'Oxbridge Offers', national: 2.1, takween: 18, suffix: '%' },
-        { metric: 'A*/A Rate', national: 27.2, takween: 68, suffix: '%' },
-        { metric: 'Russell Group', national: 15, takween: 54, suffix: '%' },
+        { metric: 'Oxbridge Offers', national: 2.1, lgt: 18, suffix: '%' },
+        { metric: 'A*/A Rate', national: 27.2, lgt: 68, suffix: '%' },
+        { metric: 'Russell Group', national: 15, lgt: 54, suffix: '%' },
     ],
     '11+': [
-        { metric: 'Grammar Places', national: 23, takween: 87, suffix: '%' },
-        { metric: 'Avg Score (/100)', national: 62, takween: 91, suffix: '' },
-        { metric: 'Improvement Pts', national: 8, takween: 31, suffix: 'pp' },
+        { metric: 'Grammar Places', national: 23, lgt: 87, suffix: '%' },
+        { metric: 'Avg Score (/100)', national: 62, lgt: 91, suffix: '' },
+        { metric: 'Improvement Pts', national: 8, lgt: 31, suffix: 'pp' },
     ],
     BTEC: [
-        { metric: 'Distinction*', national: 15.4, takween: 48, suffix: '%' },
-        { metric: 'Distinction+', national: 38, takween: 82, suffix: '%' },
-        { metric: 'Pass Rate', national: 78, takween: 99, suffix: '%' },
+        { metric: 'Distinction*', national: 15.4, lgt: 48, suffix: '%' },
+        { metric: 'Distinction+', national: 38, lgt: 82, suffix: '%' },
+        { metric: 'Pass Rate', national: 78, lgt: 99, suffix: '%' },
     ],
 };
 
@@ -100,7 +100,7 @@ const levelConfig: Record<string, {
         lineLabel: 'Average Grade (1–9)',
         lineYDomain: [0, 9],
         lineUnit: '',
-        barTitle: 'GCSE Results: Takween vs National Average',
+        barTitle: 'GCSE Results: LGT vs National Average',
         heroStats: [
             { value: '34%', label: 'Achieve Grade 9', icon: <Award className="w-5 h-5" /> },
             { value: '+4.2', label: 'Avg Grade Increase', icon: <TrendingUp className="w-5 h-5" /> },
@@ -113,7 +113,7 @@ const levelConfig: Record<string, {
         lineLabel: 'UCAS Points',
         lineYDomain: [0, 168],
         lineUnit: ' pts',
-        barTitle: 'A-Level Destinations: Takween vs National Average',
+        barTitle: 'A-Level Destinations: LGT vs National Average',
         heroStats: [
             { value: '18%', label: 'Receive Oxbridge Offers', icon: <GraduationCap className="w-5 h-5" /> },
             { value: '68%', label: 'Achieve A*/A', icon: <Award className="w-5 h-5" /> },
@@ -126,7 +126,7 @@ const levelConfig: Record<string, {
         lineLabel: 'Test Score (%)',
         lineYDomain: [0, 100],
         lineUnit: '%',
-        barTitle: '11+ Results: Takween vs National Average',
+        barTitle: '11+ Results: LGT vs National Average',
         heroStats: [
             { value: '87%', label: 'Secure Grammar Places', icon: <GraduationCap className="w-5 h-5" /> },
             { value: '+36pp', label: 'Avg Score Improvement', icon: <TrendingUp className="w-5 h-5" /> },
@@ -139,7 +139,7 @@ const levelConfig: Record<string, {
         lineLabel: 'Achievement Points',
         lineYDomain: [0, 100],
         lineUnit: ' pts',
-        barTitle: 'BTEC Results: Takween vs National Average',
+        barTitle: 'BTEC Results: LGT vs National Average',
         heroStats: [
             { value: '48%', label: 'Achieve Distinction*', icon: <Award className="w-5 h-5" /> },
             { value: '+38', label: 'Avg Points Gained', icon: <TrendingUp className="w-5 h-5" /> },
@@ -226,7 +226,7 @@ export function SubjectStatsSection({ subjectName, level }: SubjectStatsSectionP
                             📈 6-Month Progress Trajectory
                         </h3>
                         <p className="text-xs text-slate-400">
-                            Average {subjectName} improvement after joining Takween
+                            Average {subjectName} improvement after joining LGT
                         </p>
                     </div>
                     <div className="w-full h-64 sm:h-72">
@@ -276,14 +276,14 @@ export function SubjectStatsSection({ subjectName, level }: SubjectStatsSectionP
                     </div>
                 </div>
 
-                {/* Bar Chart — National vs Takween */}
+                {/* Bar Chart — National vs LGT */}
                 <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 p-4 sm:p-6 lg:p-8 shadow-sm">
                     <div className="mb-4 sm:mb-6">
                         <h3 className="text-base sm:text-lg font-bold text-primary mb-1">
                             📊 {config.barTitle}
                         </h3>
                         <p className="text-xs text-slate-400">
-                            How Takween students outperform the national average
+                            How LGT students outperform the national average
                         </p>
                     </div>
                     <div className="w-full h-64 sm:h-72">
@@ -317,8 +317,8 @@ export function SubjectStatsSection({ subjectName, level }: SubjectStatsSectionP
                                     maxBarSize={45}
                                 />
                                 <Bar
-                                    dataKey="takween"
-                                    name="Takween Students"
+                                    dataKey="lgt"
+                                    name="LGT Students"
                                     radius={[6, 6, 0, 0]}
                                     maxBarSize={45}
                                 >
@@ -337,7 +337,7 @@ export function SubjectStatsSection({ subjectName, level }: SubjectStatsSectionP
 
             {/* ── Footnote ── */}
             <p className="text-[10px] text-slate-400 text-center leading-relaxed">
-                *Data based on aggregated performance of Takween students over the 2024–2025 academic year.
+                *Data based on aggregated performance of LGT students over the 2024–2025 academic year.
                 National averages sourced from Ofqual/DfE published statistics. Individual results may vary.
             </p>
         </div>

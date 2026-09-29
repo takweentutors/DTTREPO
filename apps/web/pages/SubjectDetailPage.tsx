@@ -150,7 +150,7 @@ export default function SubjectDetailPage({ slug }: SubjectDetailPageProps) {
                         <button
                             onClick={handleBook}
                             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-white font-bold shadow-card hover:-translate-y-1 transition-all text-sm"
-                            style={{ background: 'linear-gradient(135deg, #0F172A, #334155)' }}
+                            style={{ background: 'linear-gradient(135deg, #0B0D2E, #334155)' }}
                         >
                             <BookOpen className="w-4 h-4" />
                             Book this Subject 🚀
@@ -191,7 +191,7 @@ export default function SubjectDetailPage({ slug }: SubjectDetailPageProps) {
                         </div>
                         <p className="text-slate-500 text-sm mb-6 sm:mb-10 max-w-2xl">
                             Our {subject.name} tutoring follows the full specification across all major exam boards.
-                            Here's a summary of the topics we teach and how Takween helps you master each one.
+                            Here's a summary of the topics we teach and how Let's Go Tutors helps you master each one.
                         </p>
 
                         <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
@@ -238,7 +238,7 @@ export default function SubjectDetailPage({ slug }: SubjectDetailPageProps) {
                             <button
                                 onClick={handleBook}
                                 className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-white font-bold shadow-card hover:-translate-y-1 transition-all text-sm"
-                                style={{ background: 'linear-gradient(135deg, #0F172A, #334155)' }}
+                                style={{ background: 'linear-gradient(135deg, #0B0D2E, #334155)' }}
                             >
                                 <BookOpen className="w-4 h-4" />
                                 Start {subject.name} Today

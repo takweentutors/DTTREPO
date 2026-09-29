@@ -44,7 +44,8 @@ export default function StudentDashboardPage() {
  const [error, setError] = useState('');
 
  useEffect(() => {
- api<DashboardData>('/student/dashboard')
+ const endpoint = user?.role === 'TUTOR' ? '/tutor/dashboard' : '/student/dashboard';
+ api<DashboardData>(endpoint)
  .then(setData)
  .catch((err) => {
  console.error("Dashboard API failed, using local mode", err);
@@ -56,7 +57,7 @@ export default function StudentDashboardPage() {
  });
  })
  .finally(() => setLoading(false));
- }, []);
+ }, [user?.role]);
 
  // Formatters
  const formatDate = (dateStr: string) => {
@@ -87,8 +88,20 @@ export default function StudentDashboardPage() {
 
  if (loading) {
  return (
- <div className="flex items-center justify-center min-h-[60vh]">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-secondary"></div>
+ <div className="space-y-8 animate-pulse">
+ <div className="flex justify-between items-center">
+ <div><div className="h-7 w-40 bg-slate-200 rounded mb-2" /><div className="h-4 w-64 bg-slate-100 rounded" /></div>
+ <div className="h-10 w-36 bg-slate-200 rounded-full" />
+ </div>
+ <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+ {[1, 2, 3].map(i => <div key={i} className="bg-white p-6 rounded-xl border border-slate-100"><div className="h-12 w-full bg-slate-100 rounded" /></div>)}
+ </div>
+ <div className="grid lg:grid-cols-3 gap-8">
+ <div className="lg:col-span-2 space-y-4">
+ {[1, 2, 3].map(i => <div key={i} className="h-16 bg-slate-100 rounded-xl" />)}
+ </div>
+ <div className="h-48 bg-slate-100 rounded-xl" />
+ </div>
  </div>
  );
  }
@@ -202,7 +215,7 @@ export default function StudentDashboardPage() {
  <div className="space-y-4">
  <div className="flex items-center justify-between">
  <h2 className="text-lg font-bold text-slate-900 ">Upcoming Sessions</h2>
- <a href="/student/sessions" className="text-sm text-secondary hover:underline">View all</a>
+ <a href="/dashboard/sessions" className="text-sm text-secondary hover:underline">View all</a>
  </div>
 
  <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">

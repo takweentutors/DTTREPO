@@ -6,16 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useAuth } from "@/context/AuthContext";
 import { useToast } from "@/components/ui/toast";
 import { navigate } from "@/lib/utils";
-
-function getRoleDashboard(role: string): string {
-    switch (role) {
-        case 'STUDENT': return '/student/dashboard';
-        case 'PARENT': return '/parent-dashboard';
-        case 'TUTOR': return '/tutor/dashboard';
-        case 'ADMIN': return '/admin';
-        default: return '/';
-    }
-}
+import { getRoleDashboard } from "@/lib/routes";
 
 export default function LoginPage() {
     const { login, user, loading: authLoading } = useAuth();
@@ -27,7 +18,9 @@ export default function LoginPage() {
     // Redirect if already logged in (only after auth check completes)
     useEffect(() => {
         if (!authLoading && user) {
-            navigate(getRoleDashboard(user.role));
+            const params = new URLSearchParams(window.location.search);
+            const returnTo = params.get('returnTo');
+            navigate(returnTo || getRoleDashboard(user.role));
         }
     }, [authLoading, user]);
 
@@ -48,7 +41,9 @@ export default function LoginPage() {
 
         try {
             const u = await login(email, password);
-            navigate(getRoleDashboard(u.role));
+            const params = new URLSearchParams(window.location.search);
+            const returnTo = params.get('returnTo');
+            navigate(returnTo || getRoleDashboard(u.role));
         } catch (err) {
             toast(err instanceof Error ? err.message : 'Login failed. Please check your credentials.', 'error');
         } finally {

@@ -12,7 +12,7 @@ interface TallyEmbedProps {
  */
 export default function TallyEmbed({
  formId = "GxK8LQ",
- title = "Takween Tutors — Tutor Application Tally Form",
+ title = "Let's Go Tutors — Tutor Application Tally Form",
 }: TallyEmbedProps) {
  const iframeRef = useRef<HTMLIFrameElement>(null);
  const scriptLoadedRef = useRef(false);

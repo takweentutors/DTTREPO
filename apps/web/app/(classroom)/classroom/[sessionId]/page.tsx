@@ -32,7 +32,7 @@ export default function ClassroomPage({ params }: { params: { sessionId: string 
 
     const endCall = () => {
         // Navigate back to dashboard using standard browser navigation
-        window.location.href = "/student/sessions";
+        window.location.href = "/dashboard/sessions";
     };
 
     return (

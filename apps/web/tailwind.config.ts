@@ -14,37 +14,37 @@ const config: Config = {
         extend: {
             colors: {
                 primary: {
-                    DEFAULT: "#0F172A", // Deep Navy
-                    foreground: "#FFFFFF",
+                    DEFAULT: "#2f271f",
+                    foreground: "#fff9f1",
                 },
                 secondary: {
-                    DEFAULT: "#10B981", // Emerald Green
-                    foreground: "#FFFFFF",
+                    DEFAULT: "#bf7a45",
+                    foreground: "#fff9f1",
                 },
                 accent: {
-                    DEFAULT: "#F97316", // Orange
-                    foreground: "#FFFFFF",
+                    DEFAULT: "#85705a",
+                    foreground: "#ffffff",
                 },
                 muted: {
-                    DEFAULT: "#F1F5F9",
-                    foreground: "#64748B",
+                    DEFAULT: "#eee5d7",
+                    foreground: "#6d6255",
                 },
                 background: "var(--background)",
                 foreground: "var(--foreground)",
             },
             fontFamily: {
-                sans: ["Poppins", "sans-serif"],
-                heading: ["Montserrat", "sans-serif"],
+                sans: ["Source Sans 3", "sans-serif"],
+                heading: ["Source Serif 4", "serif"],
             },
             borderRadius: {
                 xl: "0.75rem",
                 "2xl": "1rem",
             },
             boxShadow: {
-                'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                'glow': '0 0 20px -5px rgba(217, 119, 6, 0.3)',
-                'card': '0 2px 12px -2px rgba(0, 0, 0, 0.08)',
-                'card-hover': '0 8px 30px -4px rgba(0, 0, 0, 0.12)',
+                soft: '0 8px 24px -16px rgba(45, 32, 21, 0.45)',
+                glow: '0 0 0 1px rgba(191, 122, 69, 0.18), 0 16px 28px -20px rgba(132, 84, 44, 0.42)',
+                card: '0 10px 20px -16px rgba(45, 32, 21, 0.42)',
+                'card-hover': '0 18px 32px -20px rgba(45, 32, 21, 0.5)',
             },
         },
     },

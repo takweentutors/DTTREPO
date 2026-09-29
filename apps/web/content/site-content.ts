@@ -1,13 +1,12 @@
 // ──────────────────────────────────────────────────────────
-// Centralised content extracted from the Takween Tutors
-// WordPress site export (Feb 2026)
+// Centralised content for Let's Go Tutors
 // ──────────────────────────────────────────────────────────
 
 /* ── Hero Section ── */
 export const hero = {
- headline: "Learn Smarter and Achieve Faster with Takween",
+ headline: "Launch Your Learning Journey with Let's Go Tutors",
  subheadline:
- "With our cutting-edge LMS it's no wonder we are trusted by thousands of students to achieve their academic goals.",
+ "Blast off to academic success with our cutting-edge LMS — trusted by thousands of students to reach new heights.",
  cta: { label: "Get Started", href: "/register" },
  ctaSecondary: { label: "Choose Plan", href: "/pricing" },
 };
@@ -47,7 +46,7 @@ export interface PricingTier {
 export const pricingTiers: Record<string, PricingTier[]> = {
  '11+': [
  {
- name: "Platinum Path",
+ name: "Mission Commander",
  emoji: "🏆",
  subtitle: "Premium Personalised Excellence",
  ratio: "1:1",
@@ -65,7 +64,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: true,
  },
  {
- name: "Gold Edge",
+ name: "Star Navigator",
  emoji: "🥇",
  subtitle: "Focused Partnership",
  ratio: "2:1",
@@ -83,7 +82,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Silver Advantage",
+ name: "Space Explorer",
  emoji: "🥈",
  subtitle: "Collaborative Learning",
  ratio: "3:1",
@@ -101,7 +100,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Bronze Boost",
+ name: "Rocket Starter",
  emoji: "🥉",
  subtitle: "Group Support",
  ratio: "5:1",
@@ -118,7 +117,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Foundational Fixes",
+ name: "Launch Pad",
  emoji: "✏️",
  subtitle: "Affordable Exam Prep",
  ratio: "6:1",
@@ -135,7 +134,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Foundational Focus",
+ name: "Ground Control",
  emoji: "📘",
  subtitle: "Lowest Cost Access",
  ratio: "10:1",
@@ -154,7 +153,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  ],
  'GCSE': [
  {
- name: "Platinum Path",
+ name: "Mission Commander",
  emoji: "🏆",
  subtitle: "Premium Personalised Excellence",
  ratio: "1:1",
@@ -172,7 +171,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: true,
  },
  {
- name: "Gold Edge",
+ name: "Star Navigator",
  emoji: "🥇",
  subtitle: "Focused Partnership",
  ratio: "2:1",
@@ -190,7 +189,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Silver Advantage",
+ name: "Space Explorer",
  emoji: "🥈",
  subtitle: "Collaborative Learning",
  ratio: "3:1",
@@ -207,7 +206,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Bronze Boost",
+ name: "Rocket Starter",
  emoji: "🥉",
  subtitle: "Group Support",
  ratio: "5:1",
@@ -224,7 +223,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Foundational Fixes",
+ name: "Launch Pad",
  emoji: "✏️",
  subtitle: "Affordable Exam Prep",
  ratio: "6:1",
@@ -241,7 +240,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Foundational Focus",
+ name: "Ground Control",
  emoji: "📘",
  subtitle: "Lowest Cost Access",
  ratio: "10:1",
@@ -260,7 +259,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  ],
  'A-Level': [
  {
- name: "Platinum Path",
+ name: "Mission Commander",
  emoji: "🏆",
  subtitle: "Premium Personalised Excellence",
  ratio: "1:1",
@@ -278,7 +277,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: true,
  },
  {
- name: "Gold Edge",
+ name: "Star Navigator",
  emoji: "🥇",
  subtitle: "Focused Partnership",
  ratio: "2:1",
@@ -296,7 +295,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Silver Advantage",
+ name: "Space Explorer",
  emoji: "🥈",
  subtitle: "Collaborative Learning",
  ratio: "3:1",
@@ -313,7 +312,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Bronze Boost",
+ name: "Rocket Starter",
  emoji: "🥉",
  subtitle: "Group Support",
  ratio: "5:1",
@@ -330,7 +329,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Foundational Fixes",
+ name: "Launch Pad",
  emoji: "✏️",
  subtitle: "Affordable Exam Prep",
  ratio: "6:1",
@@ -347,7 +346,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Foundational Focus",
+ name: "Ground Control",
  emoji: "📘",
  subtitle: "Lowest Cost Access",
  ratio: "10:1",
@@ -366,7 +365,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  ],
  'BTEC': [
  {
- name: "Platinum Path",
+ name: "Mission Commander",
  emoji: "🏆",
  subtitle: "Premium Personalised Excellence",
  ratio: "1:1",
@@ -384,7 +383,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: true,
  },
  {
- name: "Gold Edge",
+ name: "Star Navigator",
  emoji: "🥇",
  subtitle: "Focused Partnership",
  ratio: "2:1",
@@ -402,7 +401,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Silver Advantage",
+ name: "Space Explorer",
  emoji: "🥈",
  subtitle: "Collaborative Learning",
  ratio: "3:1",
@@ -419,7 +418,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Bronze Boost",
+ name: "Rocket Starter",
  emoji: "🥉",
  subtitle: "Group Support",
  ratio: "5:1",
@@ -436,7 +435,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Foundational Fixes",
+ name: "Launch Pad",
  emoji: "✏️",
  subtitle: "Affordable Exam Prep",
  ratio: "6:1",
@@ -453,7 +452,7 @@ export const pricingTiers: Record<string, PricingTier[]> = {
  highlight: false,
  },
  {
- name: "Foundational Focus",
+ name: "Ground Control",
  emoji: "📘",
  subtitle: "Lowest Cost Access",
  ratio: "10:1",
@@ -502,21 +501,21 @@ export const levelConfigs: Record<string, LevelConfig> = {
  key: '11+',
  heading: 'Please see our 11+ pricing',
  subheading: 'Choose the right support for your child\'s success.',
- primaryColor: 'emerald',
- gradientFrom: 'from-emerald-600',
- gradientTo: 'to-green-500',
- accentBg: 'bg-emerald-50',
- accentText: 'text-emerald-700',
- accentBorder: 'border-emerald-200',
- buttonBg: 'bg-emerald-600',
- buttonHover: 'hover:bg-emerald-700',
- highlightRing: 'ring-emerald-100',
- highlightBorder: 'border-emerald-200',
- highlightShadow: 'shadow-emerald-100/50',
- badgeBg: 'bg-emerald-600',
+ primaryColor: 'cyan',
+ gradientFrom: 'from-cyan-600',
+ gradientTo: 'to-sky-500',
+ accentBg: 'bg-cyan-50',
+ accentText: 'text-cyan-700',
+ accentBorder: 'border-cyan-200',
+ buttonBg: 'bg-cyan-600',
+ buttonHover: 'hover:bg-cyan-700',
+ highlightRing: 'ring-cyan-100',
+ highlightBorder: 'border-cyan-200',
+ highlightShadow: 'shadow-cyan-100/50',
+ badgeBg: 'bg-cyan-600',
  badgeText: 'text-white',
- checkColor: 'text-emerald-500',
- heroBgFrom: 'from-emerald-50',
+ checkColor: 'text-cyan-500',
+ heroBgFrom: 'from-cyan-50',
  heroBgTo: 'to-white',
  },
  'GCSE': {
@@ -599,7 +598,7 @@ export const testimonials: Testimonial[] = [
  {
  name: "Amina Rafiq",
  role: "Parent (Tutored Sept 2023 – June 2025)",
- text: "Takween Tutors matched my daughter with an outstanding maths tutor. Lessons were structured, progress was tracked each month, and her confidence transformed. Homework feedback was detailed and helpful — we've seen far better classroom engagement as a result.",
+ text: "Let's Go Tutors matched my daughter with an outstanding maths tutor. Lessons were structured, progress was tracked each month, and her confidence transformed. Homework feedback was detailed and helpful — we've seen far better classroom engagement as a result.",
  rating: 5,
  },
  {
@@ -611,13 +610,13 @@ export const testimonials: Testimonial[] = [
  {
  name: "Sana Iqbal",
  role: "Tutor (Contracted Jan 2024 – present)",
- text: "As a Takween tutor I appreciate the professional onboarding and the platform's emphasis on quality. Students are well-prepared for lessons, communication is smooth, and I see real, measurable improvement term to term.",
+ text: "As a Let's Go tutor I appreciate the professional onboarding and the platform's emphasis on quality. Students are well-prepared for lessons, communication is smooth, and I see real, measurable improvement term to term.",
  rating: 5,
  },
  {
  name: "Richard Dawkiss",
  role: "School Coordinator (Partnership 2023–2025)",
- text: "Takween Tutors provided targeted intervention for our underperforming cohorts. Pupils returned to lessons more confident and attainment across core subjects rose after the programme.",
+ text: "Let's Go Tutors provided targeted intervention for our underperforming cohorts. Pupils returned to lessons more confident and attainment across core subjects rose after the programme.",
  rating: 5,
  },
  {
@@ -641,7 +640,7 @@ export const testimonials: Testimonial[] = [
  {
  name: "Sally Biswitcher",
  role: "SENCo",
- text: "Takween Tutors were sensitive to our pupils' needs and provided highly tailored one-to-one sessions. The pastoral communication with school staff was excellent.",
+ text: "Let's Go Tutors were sensitive to our pupils' needs and provided highly tailored one-to-one sessions. The pastoral communication with school staff was excellent.",
  rating: 5,
  },
  {
@@ -687,10 +686,10 @@ export const teachingProcess = [
 export const differentiators = {
  headline: "What Makes Us Different?",
  description:
- "At Takween Tutors, we go beyond traditional tutoring — combining expert educators, a powerful learning management system, and a personalised approach to help every student reach their full potential. Our tutors don't just teach; they mentor, motivate, and guide students with real insight into exam success. With 24/7 access to resources, progress tracking, and interactive support, Takween transforms learning into a confident, goal-driven journey.",
+ "At Let's Go Tutors, we go beyond traditional tutoring — combining expert educators, a powerful learning management system, and a personalised approach to help every student reach their full potential. Our tutors don't just teach; they mentor, motivate, and guide students with real insight into exam success. With 24/7 access to resources, progress tracking, and interactive support, Let's Go Tutors transforms learning into a confident, goal-driven mission.",
  vision: {
  title: "Our Vision",
- text: "To empower every learner with the skills, confidence, and mindset to achieve academic excellence and lifelong success. Takween Tutors envisions a future where education is accessible, engaging, and tailored to every student's potential.",
+ text: "To launch every learner toward academic excellence and lifelong success. Let's Go Tutors envisions a future where education is accessible, engaging, and tailored to every student's potential — propelling them to new heights.",
  },
  mission: {
  title: "Our Mission",
@@ -698,36 +697,36 @@ export const differentiators = {
  },
  process: {
  title: "Our Process",
- text: "At Takween, we combine expert teaching with smart technology. Each student begins with an assessment to identify strengths and goals, followed by a tailored learning plan delivered through our interactive LMS. Continuous progress tracking, feedback, and one-to-one support ensure every learner stays motivated and achieves measurable growth.",
+ text: "At Let's Go Tutors, we combine expert teaching with smart technology. Each student begins with an assessment to identify strengths and goals, followed by a tailored learning plan delivered through our interactive LMS. Continuous progress tracking, feedback, and one-to-one support ensure every learner stays motivated and achieves measurable growth.",
  },
 };
 
-/* ── The Takween Story (About Page) ── */
-export const takweenStory = {
- sectionTitle: "WHY WE CARE",
- headline: "🌱 The Takween Story — Built by Educators, Driven by Purpose",
+/* ── The Let's Go Tutors Story (About Page) ── */
+export const brandStory = {
+ sectionTitle: "OUR MISSION",
+ headline: "The Let's Go Tutors Story — Built by Educators, Launched for Purpose",
  paragraphs: [
- "Takween Tutors was born from frustration — and passion. A group of experienced educators and tutors, with over a decade of combined teaching experience, came together after years of watching traditional tuition platforms fail students. We saw endless systems that promised \"personalised learning\" but delivered generic lessons, poor feedback, and zero transparency. Students were treated like numbers; tutors were left without the tools to truly teach.",
+ "Let's Go Tutors was born from frustration — and passion. A group of experienced educators and tutors, with over a decade of combined teaching experience, came together after years of watching traditional tuition platforms fail students. We saw endless systems that promised \"personalised learning\" but delivered generic lessons, poor feedback, and zero transparency. Students were treated like numbers; tutors were left without the tools to truly teach.",
  "We knew it could be different.",
- "So, we built Takween — from the ground up — a tutoring platform designed by educators, for learners. We integrated cutting-edge Learning Management System (LMS) technology that actually tracks progress, delivers meaningful reports, and fosters real communication between tutors, students, and parents. Every session is powered by data, guided by human expertise, and centred around one goal: helping every learner grow with confidence.",
- "Our tutors are not just instructors — they're mentors and innovators. They use Takween's tools to see where students excel, where they struggle, and how to close that gap with precision and care. For parents, that means total transparency. For students, that means visible progress. And for tutors, it means finally being part of a system that values teaching as much as learning.",
- "Takween Tutors isn't just another tuition service — it's a movement. A grassroots revolution led by educators who believe every learner deserves better.",
+ "So, we launched Let's Go Tutors — from the ground up — a tutoring platform designed by educators, for learners. We integrated cutting-edge Learning Management System (LMS) technology that actually tracks progress, delivers meaningful reports, and fosters real communication between tutors, students, and parents. Every session is powered by data, guided by human expertise, and centred around one goal: helping every learner reach new heights.",
+ "Our tutors are not just instructors — they're mentors and navigators. They use Let's Go Tutors' tools to see where students excel, where they struggle, and how to close that gap with precision and care. For parents, that means total transparency. For students, that means visible progress. And for tutors, it means finally being part of a system that values teaching as much as learning.",
+ "Let's Go Tutors isn't just another tuition service — it's a launchpad. A mission led by educators who believe every learner deserves better.",
  ],
  callToAction:
- "Whether you're a tutor who wants to teach with purpose, or a parent who wants more than promises, Takween is where genuine learning begins.",
+ "Whether you're a tutor who wants to teach with purpose, or a parent who wants more than promises, Let's Go Tutors is where genuine learning begins.",
 };
 
 /* ── Footer About Block ── */
 export const footerAbout = {
  tagline:
- "Different kind of tuition agency, built on precision, care, and results.",
+ "A launchpad for learners — built on precision, care, and results.",
  lmsLine:
- "Smart LMS technology + outstanding tutors = measurable progress every step of the way.",
+ "Smart LMS technology + outstanding tutors = measurable progress at every stage of the mission.",
  missionLine:
- "Shaping confident learners through formation, growth, and success.",
+ "Propelling confident learners through discovery, growth, and success.",
  aboutLearning:
- "At Takween Tutors, we believe learning is more than passing exams — it's about building strong foundations, confidence, and independence. Our approach combines expert tutors with smart technology, ensuring every lesson is tailored, every step is measured, and every student is supported to grow into their full potential.",
- email: "Info@takweentutors.com",
+ "At Let's Go Tutors, we believe learning is more than passing exams — it's about building strong foundations, confidence, and independence. Our approach combines expert tutors with smart technology, ensuring every lesson is tailored, every step is measured, and every student is supported to reach their full potential.",
+ email: "info@letsgotutors.com",
 };
 
 /* ── CTA Block ── */
