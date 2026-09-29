@@ -31,3 +31,7 @@ dist-ssr
 
 # Cloned reference repos
 claude-code-security-review/
+
+# Local tooling
+.claude/
+.vite/

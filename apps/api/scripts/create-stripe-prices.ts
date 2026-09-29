@@ -1,10 +1,10 @@
 /**
- * One-time script to create Stripe Products + Prices for each Takween pricing tier.
+ * One-time script to create Stripe Products + Prices for each Let's Go Tutors pricing tier.
  * Run: npx tsx scripts/create-stripe-prices.ts
  */
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_51SbDhTH8JpK5JEfw4ipqfE2H2VZ3n14NPe7PXeXjK7sryVXKxaI0JOKqW0QyqG92VNu2CIAkF41kJptu8jAQPpUa00zChVo7Gy');
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const tiers = [
     { name: 'Platinum Path', envKey: 'STRIPE_PRICE_PLATINUM_PATH', pencePerHour: 4500, ratio: '1:1' },
@@ -16,14 +16,14 @@ const tiers = [
 ];
 
 async function main() {
-    console.log('Creating Stripe Products and Prices for Takween Tutors...\n');
+    console.log('Creating Stripe Products and Prices for Let's Go Tutors Tutors...\n');
 
     const envLines: string[] = [];
 
     for (const tier of tiers) {
         // Create the product
         const product = await stripe.products.create({
-            name: `Takween Tutors — ${tier.name}`,
+            name: `Let's Go Tutors Tutors — ${tier.name}`,
             description: `${tier.name} tutoring tier (${tier.ratio} tutor-to-student ratio)`,
             metadata: { tier: tier.name, ratio: tier.ratio },
         });

@@ -1,5 +1,8 @@
 import type { Request, Response, NextFunction } from 'express';
 import { supabase } from '../lib/supabase.js';
+import prisma from '../lib/prisma.js';
+
+const SELF_SERVE_ROLES = ['STUDENT', 'TUTOR', 'PARENT'];
 
 // Extend Express Request type
 declare global {
@@ -34,12 +37,20 @@ export async function authenticate(req: Request, res: Response, next: NextFuncti
             return;
         }
 
-        // Determine role: defaults to user metadata, or 'STUDENT' fallback
-        const role = user.user_metadata?.role || 'STUDENT';
+        // Role comes from the database, never from user_metadata: Supabase lets
+        // users edit their own user_metadata, so trusting it allows self-promotion
+        // to ADMIN. For users not yet synced, metadata may only pick a self-serve role.
+        const dbUser = await prisma.user.findUnique({
+            where: { id: user.id },
+            select: { role: true },
+        });
+        const requestedRole = String(user.user_metadata?.role || '').toUpperCase();
+        const role = dbUser?.role
+            ?? (SELF_SERVE_ROLES.includes(requestedRole) ? requestedRole : 'STUDENT');
 
         req.user = {
             userId: user.id,
-            role: role.toUpperCase(),
+            role,
             email: user.email,
         };
 
