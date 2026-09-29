@@ -151,7 +151,7 @@ Run this snippet in the Supabase SQL Editor.
 INSERT INTO public.profiles (id, email, name, role, created_at, updated_at)
 VALUES (
     '<SUPABASE_USER_UUID>', 
-    'admin@takween.com', 
+    'admin@letsgotutors.com',
     'System Admin',
     'admin', 
     now(),

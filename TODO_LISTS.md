@@ -1,24 +1,31 @@
 # Project TODO Lists
 
-Based on the codebase audit, here are three prioritised, actionable lists detailing specific changes needed to reach production readiness.
+Re-verified against the code on 2026-09-29. Items from the earlier audit that are already fixed are listed at the bottom.
 
-### 🔴 Todo List 1 — Critical (Block Production)
-- [ ] [Architecture/Auth] Resolve dual-database/auth split. The frontend uses `supabase.auth` while the backend Express API uses custom Prisma/JWT auth (`apps/api/src/routes/auth.ts`). Decide on and implement a single source of truth for auth.
-- [ ] [apps/web/vite.config.ts] Remove `GEMINI_API_KEY` from the client bundle (Line 21). Inject it via a secure backend proxy (`/api/ai`) instead of mapping to `process.env`.
-- [ ] [apps/api/src/routes/checkout.ts] Add Rate Limiting (`rateLimit(100, 60_000)`) specifically to the `/create-session` Stripe endpoint to prevent malicious abuse scaling fake sessions.
-- [ ] [supabase/migration.sql] Fix overly permissive RLS policies on `tutor_profiles` and `tutor_subjects` exposing private tutor data (Line 114, 144) to unauthenticated scraping via `USING (true)`.
-- [ ] [apps/api/src/routes/auth.ts] Add Zod string maximum length constraints (`.max(72)`) for the `password` input payload before passing it to `bcrypt.hash()` to mitigate regex/bcrypt computational DDoS vectors.
+### 🔴 Before go-live (owner actions, not code)
+- [ ] Rotate every secret that was in `apps/api/.env` — it was committed to a public repo (Stripe, Supabase service role, database password, Zoom, Gemini). The file is now untracked, but old commits still contain it.
+- [ ] Confirm `supabase/rls_fix.sql` is applied in the Supabase project (tutor profile/subject policies must not be `USING (true)`).
+- [ ] Set Supabase Auth Site URL + Redirect URLs to the production web domain.
+- [ ] Create the Stripe webhook endpoint for the Railway API URL (see `DEPLOY.md`).
 
-### 🟡 Todo List 2 — Important (Should Ship Soon After Launch)
-- [ ] [apps/api/src/routes/stripe-webhook.ts] Implement the database `Booking` row insertion and updates. It is currently entirely commented out behind a `TODO:` comment wrapper on `checkout.session.completed`.
-- [ ] [apps/api/src/routes/student.ts] Handle the Zoom API catch failure gracefully. If `createZoomMeeting` fails, the backend currently catches it silently and returns `201 Created` without a meeting link, leaving students confused.
-- [ ] [apps/web/app/(dashboard)/layout.tsx] Add a confirmation modal logic (e.g. Radix UI AlertDialog) before signing out the user. The current "Sign Out" button executes instantly on click.
-- [ ] [apps/web/app/(auth)/login/page.tsx] Centralise the error alerts mechanism into a reusable global component (e.g. `sonner` or Shadcn Toaster). It currently relies on manual inline `bg-red-50` styling.
-- [ ] [apps/web/app/(dashboard)/layout.tsx] Increase `userIcon` wrapper touch target sizes (`w-8 h-8`) to `44px` minimum for mobile WCAG AA accessibility compliance.
+### 🟡 Soon after launch
+- [ ] Failed-payment email in `apps/api/src/routes/stripe-webhook.ts` (`invoice.payment_failed` TODO).
+- [ ] Content-Security-Policy for the web app (other security headers are set in `vercel.json` / `apps/web/public/serve.json`).
+- [ ] Split the largest bundles (`subset-shared`, `flowchart-elk`, `percentages`) — build warns about >500 kB chunks.
+- [ ] Consider removing `apps/api/.env` from git history (`git filter-repo`) or making the repo private.
 
-### 🟢 Todo List 3 — Nice to Have (Backlog)
-- [ ] [apps/api/src/routes/] Implement GraphQL DataLoaders or explicit Prisma cursor pagination (`take/skip`) to avoid severe N+1 query slowdowns as user volumes spike.
-- [ ] [apps/web/pages/StripeCheckoutPage.tsx] Remove generic `declare const Stripe: any;` and implement proper `@stripe/stripe-js` type definitions for strict typescript compiler safety.
-- [ ] [apps/web/app/layout.tsx] Implement standard Tailwind dark/light mode overrides via `next-themes` CSS custom properties instead of statically typing `bg-white text-slate-900`.
-- [ ] [apps/web/components/ui/button.tsx] Replace manual spacing values (like `px-4 py-2`) with generic semantic padding utilities and enforce explicit `aria-label` passing for icon-only button variants.
-- [ ] [apps/api/prisma/schema.prisma*] Add explicit relational indices (e.g. `@@index([studentId])`) against highly accessed foreign keys in `Message` and `Session` models.
+### 🟢 Backlog
+- [ ] Pagination (`take`/`cursor`) on admin and student list endpoints.
+- [ ] Replace `declare const Stripe: any` in `StripeCheckoutPage.tsx` with `@stripe/stripe-js` types.
+- [ ] Rationalise the Next.js-style `app/` folders inside the Vite app.
+
+### ✅ Done
+- Gemini key removed from the client bundle (served via `/api/ai`).
+- Rate limit on `/api/checkout/*`; bcrypt/password max length 72.
+- Stripe webhook creates/updates `Booking` rows.
+- Zoom failure surfaces `zoomPending` to the frontend.
+- Sign-out confirmation dialog; toast system.
+- Roles are read from the database, not from user-editable Supabase `user_metadata` (privilege escalation fix).
+- Hardcoded Stripe test key and admin password removed from scripts.
+- Prisma migration for tutor applications / support tickets / `stripeCustomerId`.
+- Railway configs for API and web; `DEPLOY.md`.
