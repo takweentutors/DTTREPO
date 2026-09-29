@@ -13,14 +13,19 @@ import stripeWebhookRoutes from './routes/stripe-webhook.js';
 import aiRoutes from './routes/ai.js';
 
 const app = express();
-const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:5173';
+// Comma-separated list, e.g. "https://letsgotutors.com,https://www.letsgotutors.com"
+const CORS_ORIGINS = (process.env.CORS_ORIGIN || 'http://localhost:5173')
+    .split(',').map((o) => o.trim()).filter(Boolean);
+
+// Behind Railway/Vercel's proxy: use X-Forwarded-For so rate limits key on the real client IP
+app.set('trust proxy', 1);
 
 // Security headers (CSP, X-Frame-Options, HSTS, etc.)
 app.use(helmet());
 
 // CORS
 app.use(cors({
-    origin: CORS_ORIGIN,
+    origin: CORS_ORIGINS,
     credentials: true,
 }));
 

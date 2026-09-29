@@ -1,10 +1,16 @@
 import { Router } from 'express';
+import Stripe from 'stripe';
 import prisma from '../lib/prisma.js';
 import { authenticate, requireRole } from '../middleware/auth.js';
 import { createSessionSchema, updateProfileSchema, sendMessageSchema } from '../lib/validators.js';
 import { createZoomMeeting } from '../lib/zoom.js';
 
 const router = Router();
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '');
+const FRONTEND_URL = process.env.FRONTEND_URL || (process.env.CORS_ORIGIN || 'http://localhost:5173').split(',')[0].trim();
+
+// Cache portal configuration ID in memory to avoid re-creating on every request
+let portalConfigId: string | null = null;
 
 // All student routes require authentication + STUDENT role
 router.use(authenticate, requireRole('STUDENT'));
@@ -239,6 +245,50 @@ router.get('/billing', async (req, res) => {
     } catch (err) {
         console.error('Student billing error:', err);
         res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+// POST /api/student/billing-portal
+// Creates a Stripe Billing Portal session so the student can manage subscriptions
+router.post('/billing-portal', async (req, res) => {
+    try {
+        const user = await prisma.user.findUnique({
+            where: { id: req.user!.userId },
+        });
+
+        if (!user || !(user as any).stripeCustomerId) {
+            res.json({
+                error: "You haven't made any transactions yet. Once you purchase a tuition plan, you'll be able to manage your billing, download invoices, and switch plans here."
+            });
+            return;
+        }
+
+        // Use portal config from env (created by scripts/setup-stripe.ts), or find existing default
+        if (!portalConfigId) {
+            portalConfigId = process.env.STRIPE_PORTAL_CONFIG_ID || null;
+
+            if (!portalConfigId) {
+                try {
+                    const configs = await stripe.billingPortal.configurations.list({ limit: 1, is_default: true });
+                    if (configs.data.length > 0) {
+                        portalConfigId = configs.data[0].id;
+                    }
+                } catch (configErr: any) {
+                    console.warn('Could not find portal config:', configErr.message);
+                }
+            }
+        }
+
+        const portalSession = await stripe.billingPortal.sessions.create({
+            customer: (user as any).stripeCustomerId,
+            return_url: `${FRONTEND_URL}/dashboard/billing`,
+            ...(portalConfigId ? { configuration: portalConfigId } : {}),
+        });
+
+        res.json({ url: portalSession.url });
+    } catch (err: any) {
+        console.error('Billing portal error:', err.message || err);
+        res.status(500).json({ error: 'Failed to open billing portal. Please try again.' });
     }
 });
 

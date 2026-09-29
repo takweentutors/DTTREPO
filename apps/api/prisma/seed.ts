@@ -28,7 +28,7 @@ async function main() {
     // Create users
     const studentUser = await prisma.user.create({
         data: {
-            email: 'alex@student.takween.com',
+            email: 'alex@student.letsgotutors.com',
             passwordHash,
             name: 'Alex Rivera',
             role: Role.STUDENT,
@@ -45,7 +45,7 @@ async function main() {
 
     const tutorUser = await prisma.user.create({
         data: {
-            email: 'rasha@tutor.takween.com',
+            email: 'rasha@tutor.letsgotutors.com',
             passwordHash,
             name: 'Dr. Rasha Aziz',
             role: Role.TUTOR,
@@ -62,7 +62,7 @@ async function main() {
 
     const adminUser = await prisma.user.create({
         data: {
-            email: 'admin@takween.com',
+            email: 'admin@letsgotutors.com',
             passwordHash,
             name: 'Admin User',
             role: Role.ADMIN,
@@ -162,9 +162,9 @@ async function main() {
     console.log('✅ Seed complete!');
     console.log('');
     console.log('Test accounts:');
-    console.log('  Student: alex@student.takween.com / password123');
-    console.log('  Tutor:   rasha@tutor.takween.com / password123');
-    console.log('  Admin:   admin@takween.com / password123');
+    console.log('  Student: alex@student.letsgotutors.com / password123');
+    console.log('  Tutor:   rasha@tutor.letsgotutors.com / password123');
+    console.log('  Admin:   admin@letsgotutors.com / password123');
 }
 
 main()

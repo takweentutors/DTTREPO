@@ -1,5 +1,5 @@
 {
-    "name": "takween-tutors-monorepo",
+    "name": "lets-go-tutors-monorepo",
     "private": true,
     "scripts": {
         "dev": "concurrently --names api,web --prefix-colors blue,green \"npm run dev:api\" \"npm run dev:web\"",
